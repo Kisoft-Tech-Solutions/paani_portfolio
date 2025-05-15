@@ -5,28 +5,31 @@ const Header = () => {
   return (
     <header className="fixed top-0 w-full bg-blue-600 text-white z-50">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center">
-            <Image
-              src="/logo.png"
-              alt="Paani Digital Marketing"
-              width={120}
-              height={40}
-              className="cursor-pointer"
-            />
+        <div className="flex items-center justify-between h-16 md:h-20">
+          <Link href="/" className="flex items-center h-full py-2">
+            <div className="relative h-full aspect-[3/1]">
+              <Image
+                src="/logo.jpeg"
+                alt="Paani Digital Marketing"
+                fill
+                className="object-contain"
+                priority
+                sizes="(max-width: 768px) 100px, 150px"
+              />
+            </div>
           </Link>
           
           <nav className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="hover:text-blue-200 transition-colors">
+            <Link href="/" className="hover:text-blue-200 transition-colors font-medium">
               Home
             </Link>
-            <Link href="/about" className="hover:text-blue-200 transition-colors">
+            <Link href="/about" className="hover:text-blue-200 transition-colors font-medium">
               About
             </Link>
-            <Link href="/services" className="hover:text-blue-200 transition-colors">
+            <Link href="/services" className="hover:text-blue-200 transition-colors font-medium">
               Services
             </Link>
-            <Link href="/pricing" className="hover:text-blue-200 transition-colors">
+            <Link href="/pricing" className="hover:text-blue-200 transition-colors font-medium">
               Pricing
             </Link>
           </nav>

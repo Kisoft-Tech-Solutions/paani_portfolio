@@ -1,50 +1,76 @@
 const Services = () => {
+  const services = [
+    {
+      title: "Social Media Management",
+      price: "Starting from ₹500/platform",
+      description: "Complete social media handling with strategic content creation and community engagement",
+      features: [
+        "Platform Setup & Optimization",
+        "Content Calendar",
+        "Regular Posting",
+        "Community Management"
+      ]
+    },
+    {
+      title: "Brand Video Production",
+      price: "₹3000/video",
+      description: "Professional video content creation that tells your brand story effectively",
+      features: [
+        "Concept Development",
+        "Professional Filming",
+        "Expert Editing",
+        "Multiple Revisions"
+      ]
+    },
+    {
+      title: "Digital Gateway Board",
+      price: "₹2500 - ₹6500",
+      description: "Comprehensive digital presence management for your business",
+      features: [
+        "Website Management",
+        "SEO Optimization",
+        "Analytics Tracking",
+        "Regular Updates"
+      ]
+    }
+  ];
+
   return (
-    <section className="py-20">
+    <section className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-600 mb-16">
-          Our Services
-        </h2>
-        
+        <div className="text-center mb-16">
+          <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Our Services</span>
+          <h2 className="text-4xl font-bold text-gray-900 mt-4 mb-4">Digital Marketing Solutions</h2>
+          <div className="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Comprehensive digital solutions tailored to your business needs
+          </p>
+        </div>
+
         <div className="grid md:grid-cols-3 gap-8">
-          {[
-            {
-              title: "Social Media Management",
-              description: "Complete social media handling with content creation and engagement",
-              price: "Starting from ₹500/platform"
-            },
-            {
-              title: "Brand Video Production",
-              description: "Professional video content creation for your brand",
-              price: "₹3000/video"
-            },
-            {
-              title: "Digital Marketing",
-              description: "Comprehensive digital marketing strategies and campaigns",
-              price: "Custom packages available"
-            },
-            {
-              title: "Content Design",
-              description: "Creative content design for all your marketing needs",
-              price: "₹500/content"
-            },
-            {
-              title: "Social Media Boosting",
-              description: "Strategic paid promotions across platforms",
-              price: "₹165 per $"
-            },
-            {
-              title: "Product Photography",
-              description: "Professional product photography and editing",
-              price: "₹20 per product"
-            }
-          ].map((service, index) => (
-            <div key={index} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-              <h3 className="text-xl font-semibold text-blue-600 mb-3">
-                {service.title}
-              </h3>
-              <p className="text-gray-600 mb-4">{service.description}</p>
-              <p className="text-blue-800 font-semibold">{service.price}</p>
+          {services.map((service, index) => (
+            <div 
+              key={index}
+              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all group"
+            >
+              <div className="border-b border-gray-200 pb-8 mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">{service.title}</h3>
+                <p className="text-gray-600 mb-6">{service.description}</p>
+                <p className="text-blue-600 font-bold text-xl">{service.price}</p>
+              </div>
+              <ul className="space-y-4">
+                {service.features.map((feature, i) => (
+                  <li key={i} className="flex items-center gap-3">
+                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              <button className="w-full mt-8 bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors">
+                Get Started
+              </button>
             </div>
           ))}
         </div>
