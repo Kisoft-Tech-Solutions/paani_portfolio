@@ -1,4 +1,6 @@
+'use client';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 const About = () => {
   const features = [
@@ -20,34 +22,110 @@ const About = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-blue-900/5 to-blue-900/10">
-      <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">About Us</span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+    <section className="py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600 relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0">
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.2, 0.3, 0.2],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+          }}
+          className="absolute top-1/4 left-1/3 w-72 h-72 bg-blue-400/20 rounded-full filter blur-3xl"
+        />
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.2, 0.3, 0.2],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            delay: 4,
+          }}
+          className="absolute bottom-1/4 right-1/3 w-72 h-72 bg-blue-300/20 rounded-full filter blur-3xl"
+        />
+      </div>
+
+      <div className="relative container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="max-w-3xl mx-auto text-center mb-16"
+        >
+          <motion.span
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-blue-300 font-semibold text-sm uppercase tracking-wider"
+          >
+            About Us
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="text-4xl md:text-5xl font-bold mt-4 mb-6 text-white"
+          >
             Transforming Digital Marketing
-          </h2>
-          <div className="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
-          <p className="text-xl text-gray-600 leading-relaxed">
+          </motion.h2>
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: "5rem" }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="h-1 bg-blue-300 mx-auto mb-8"
+          />
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="text-xl text-blue-100 leading-relaxed"
+          >
             We're passionate about helping businesses grow through innovative digital 
             marketing strategies and cutting-edge solutions.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-20">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: 0.2
+              }
+            }
+          }}
+          className="grid md:grid-cols-3 gap-6 lg:gap-8"
+        >
           {features.map((feature, index) => (
-            <div 
+            <motion.div
               key={index}
-              className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all hover:bg-gradient-to-b hover:from-blue-50 hover:to-white border border-blue-50"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 }
+              }}
+              whileHover={{ scale: 1.05 }}
+              className="group bg-white/10 backdrop-blur-lg p-8 rounded-2xl border border-blue-400/20 hover:bg-white/20 transition-all"
             >
-              <div className="text-4xl mb-6 transform group-hover:scale-110 transition-transform">
+              <motion.div
+                whileHover={{ scale: 1.2, rotate: 5 }}
+                className="text-4xl mb-6"
+              >
                 {feature.icon}
-              </div>
-              <h3 className="text-2xl font-bold text-blue-800 mb-4">{feature.title}</h3>
-              <p className="text-gray-600">{feature.description}</p>
-            </div>
+              </motion.div>
+              <h3 className="text-2xl font-bold text-white mb-4">{feature.title}</h3>
+              <p className="text-blue-100">{feature.description}</p>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

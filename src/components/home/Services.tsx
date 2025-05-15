@@ -1,8 +1,11 @@
+'use client';
+import { motion } from 'framer-motion';
+
 const Services = () => {
   const services = [
     {
       title: "Social Media Management",
-      price: "Starting from ₹500/platform",
+      price: "Starting from NPR  500/platform",
       description: "Complete social media handling with strategic content creation and community engagement",
       features: [
         "Platform Setup & Optimization",
@@ -13,7 +16,7 @@ const Services = () => {
     },
     {
       title: "Brand Video Production",
-      price: "₹3000/video",
+      price: "NPR  3000/video",
       description: "Professional video content creation that tells your brand story effectively",
       features: [
         "Concept Development",
@@ -24,7 +27,7 @@ const Services = () => {
     },
     {
       title: "Digital Gateway Board",
-      price: "₹2500 - ₹6500",
+      price: "NPR  2500 - NPR  6500",
       description: "Comprehensive digital presence management for your business",
       features: [
         "Website Management",
@@ -36,44 +39,140 @@ const Services = () => {
   ];
 
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Our Services</span>
-          <h2 className="text-4xl font-bold text-gray-900 mt-4 mb-4">Digital Marketing Solutions</h2>
-          <div className="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Comprehensive digital solutions tailored to your business needs
-          </p>
-        </div>
+    <section className="py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600 relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0">
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.2, 0.3, 0.2],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+          }}
+          className="absolute top-1/4 left-1/3 w-72 h-72 bg-blue-400/20 rounded-full filter blur-3xl"
+        />
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.2, 0.3, 0.2],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            delay: 4,
+          }}
+          className="absolute bottom-1/4 right-1/3 w-72 h-72 bg-blue-300/20 rounded-full filter blur-3xl"
+        />
+      </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+      <div className="relative container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <motion.span
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-blue-300 font-semibold text-sm uppercase tracking-wider"
+          >
+            Our Services
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="text-4xl font-bold text-white mt-4 mb-4"
+          >
+            Digital Marketing Solutions
+          </motion.h2>
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: "5rem" }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="h-1 bg-blue-300 mx-auto mb-8"
+          />
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="text-xl text-blue-100 max-w-2xl mx-auto"
+          >
+            Comprehensive digital solutions tailored to your business needs
+          </motion.p>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: 0.2
+              }
+            }
+          }}
+          className="grid md:grid-cols-3 gap-8"
+        >
           {services.map((service, index) => (
-            <div 
+            <motion.div
               key={index}
-              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all group"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 }
+              }}
+              whileHover={{ scale: 1.02 }}
+              className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-blue-400/20 hover:bg-white/20 transition-all group"
             >
-              <div className="border-b border-gray-200 pb-8 mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">{service.title}</h3>
-                <p className="text-gray-600 mb-6">{service.description}</p>
-                <p className="text-blue-600 font-bold text-xl">{service.price}</p>
+              <div className="border-b border-blue-400/20 pb-8 mb-8">
+                <h3 className="text-2xl font-bold text-white mb-4">{service.title}</h3>
+                <p className="text-blue-100 mb-6">{service.description}</p>
+                <p className="text-blue-300 font-bold text-xl">{service.price}</p>
               </div>
-              <ul className="space-y-4">
+              <motion.ul
+                variants={{
+                  hidden: {},
+                  visible: {
+                    transition: {
+                      staggerChildren: 0.1
+                    }
+                  }
+                }}
+                className="space-y-4"
+              >
                 {service.features.map((feature, i) => (
-                  <li key={i} className="flex items-center gap-3">
-                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <motion.li
+                    key={i}
+                    variants={{
+                      hidden: { opacity: 0, x: -20 },
+                      visible: { opacity: 1, x: 0 }
+                    }}
+                    className="flex items-center gap-3 text-blue-100"
+                  >
+                    <svg className="w-5 h-5 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                     {feature}
-                  </li>
+                  </motion.li>
                 ))}
-              </ul>
-              <button className="w-full mt-8 bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors">
+              </motion.ul>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-full mt-8 bg-white text-blue-900 py-3 rounded-xl font-semibold hover:bg-blue-50 transition-colors"
+              >
                 Get Started
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
