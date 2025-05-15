@@ -1,5 +1,4 @@
 'use client';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 const About = () => {
@@ -86,7 +85,7 @@ const About = () => {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="text-xl text-blue-100 leading-relaxed"
           >
-            We're passionate about helping businesses grow through innovative digital 
+            We &apos;re passionate about helping businesses grow through innovative digital 
             marketing strategies and cutting-edge solutions.
           </motion.p>
         </motion.div>
