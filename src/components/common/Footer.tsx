@@ -40,7 +40,6 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-
           {/* Services */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Services</h3>
