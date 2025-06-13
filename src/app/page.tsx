@@ -4,6 +4,7 @@ import Services from '@/components/home/Services';
 import Pricing from '@/components/home/Pricing';
 import Header from '@/components/common/Header';
 import Footer from '@/components/common/Footer';
+import ChatBot from '@/chatbot/page';
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <About />
       <Services />
       <Pricing />
+      <ChatBot />
       <Footer />
     </main>
   );
