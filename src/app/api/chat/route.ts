@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-// Validate API key
+
 if (!process.env.NEXT_PUBLIC_GEMINI_API_KEY) {
   throw new Error('Missing Gemini API key');
 }

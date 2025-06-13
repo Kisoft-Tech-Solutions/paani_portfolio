@@ -18,7 +18,6 @@ import ChatIcon from '@mui/icons-material/Chat';
 import CloseIcon from '@mui/icons-material/Close';
 import dynamic from 'next/dynamic';
 
-// Dynamic import of ChatInterface with no SSR
 const ChatInterface = dynamic(() => import("../components/chatbot/ChatInterface"), {
   ssr: false,
 });
@@ -40,11 +39,11 @@ const StyledFab = styled(Fab)(({ theme }) => ({
   transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
   padding: '12px 24px',
   borderRadius: '50px',
-  background: `linear-gradient(135deg, #2196F3, #1976D2)`, // Changed to blue gradient
+  background: `linear-gradient(135deg, #2196F3, #1976D2)`, 
   '&:hover': {
     transform: 'scale(1.05)',
-    boxShadow: '0 8px 25px rgba(33, 150, 243, 0.25)', // Adjusted shadow color
-    background: `linear-gradient(135deg, #1976D2, #2196F3)`, // Reversed gradient on hover
+    boxShadow: '0 8px 25px rgba(33, 150, 243, 0.25)', 
+    background: `linear-gradient(135deg, #1976D2, #2196F3)`, 
   },
   '& .MuiSvgIcon-root': {
     marginRight: 8,
@@ -77,7 +76,7 @@ const StyledDialog = styled(Dialog)(({ theme }) => ({
 }));
 
 const StyledDialogTitle = styled(DialogTitle)(({ theme }) => ({
-  background: `linear-gradient(135deg, #2196F3, #1976D2)`, // Changed to blue gradient
+  background: `linear-gradient(135deg, #2196F3, #1976D2)`, 
   color: '#FFFFFF',
   padding: theme.spacing(2.5),
   display: 'flex',
@@ -186,7 +185,7 @@ const ChatBot = () => {
             p: 0, 
             height: 'calc(100% - 72px)', 
             overflow: 'hidden',
-            bgcolor: '#F0F7FF', // Changed to light blue background
+            bgcolor: '#F0F7FF', 
             position: 'relative'
           }}>
             <ChatInterface />

@@ -17,7 +17,6 @@ interface Message {
   isUser: boolean;
   timestamp: Date;
 }
-
 const ChatContainer = styled(Paper)(({ theme }) => ({
   width: '100%',
   height: '100%',
@@ -32,8 +31,8 @@ const MessagesBox = styled(Box)(({ theme }) => ({
   flex: 1,
   overflow: 'auto',
   padding: theme.spacing(3),
-  backgroundColor: '#FAF6F1', // Light beige background
-  backgroundImage: 'radial-gradient(circle at center, #F0E6DB 1px, transparent 1px)', // Softer dots
+  backgroundColor: '#FAF6F1', 
+  backgroundImage: 'radial-gradient(circle at center, #F0E6DB 1px, transparent 1px)', 
   backgroundSize: '24px 24px',
   '&::-webkit-scrollbar': {
     width: '8px',
@@ -80,7 +79,7 @@ const MessageBubble = styled(Box, {
       transform: 'translateY(0)'
     }
   },
-  backgroundColor: isUser ? '#C8A27C' : '#FFFFFF', // Changed user message color
+  backgroundColor: isUser ? '#C8A27C' : '#FFFFFF', 
   color: isUser ? '#FFFFFF' : '#4A4A4A',
   boxShadow: isUser 
     ? '0 4px 12px rgba(200, 162, 124, 0.2)'
@@ -92,9 +91,9 @@ const StyledAvatar = styled(Avatar)(({ theme }) => ({
   '&:hover': {
     transform: 'scale(1.1)',
   },
-  backgroundColor: '#8B6B4F', // Darker brown for AI avatar
+  backgroundColor: '#8B6B4F', 
   '&.user-avatar': {
-    backgroundColor: '#C8A27C', // Lighter brown for user avatar
+    backgroundColor: '#C8A27C', 
   }
 }));
 
