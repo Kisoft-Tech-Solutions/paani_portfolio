@@ -10,7 +10,6 @@ import {
 } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { styled } from '@mui/material/styles';
-import { ChatError, ChatResponse } from '@/types/chat';
 
 interface Message {
   id: number;
@@ -87,14 +86,14 @@ const MessageBubble = styled(Box, {
     : '0 4px 12px rgba(0, 0, 0, 0.08)',
 }));
 
-const StyledAvatar = styled(Avatar)(() => ({
+const StyledAvatar = styled(Avatar)(({ theme }) => ({
   transition: 'all 0.2s ease-in-out',
   '&:hover': {
     transform: 'scale(1.1)',
   },
-  backgroundColor: '#8B6B4F',
+  backgroundColor: '#8B6B4F', 
   '&.user-avatar': {
-    backgroundColor: '#C8A27C',
+    backgroundColor: '#C8A27C', 
   }
 }));
 
@@ -186,16 +185,12 @@ Current conversation context: ${messages.map(m => `${m.isUser ? 'User' : 'Assist
       });
 
       if (!response.ok) {
-        const errorData = await response.json() as ChatResponse;
+        const errorData = await response.json();
         throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
       }
 
-      const data = await response.json() as ChatResponse;
+      const data = await response.json();
       
-      if (!data.response) {
-        throw new Error('Invalid response from server');
-      }
-
       const botMessage: Message = {
         id: Date.now() + 1,
         text: data.response,
@@ -204,12 +199,11 @@ Current conversation context: ${messages.map(m => `${m.isUser ? 'User' : 'Assist
       };
 
       setMessages(prev => [...prev, botMessage]);
-    } catch (error: unknown) {
-      const chatError = error as ChatError;
-      console.error('Chat Error:', chatError);
+    } catch (error: any) {
+      console.error('Chat Error:', error);
       const errorMessage: Message = {
         id: Date.now() + 1,
-        text: `I apologize, but I encountered an error: ${chatError.message}`,
+        text: `I apologize, but I encountered an error: ${error.message}`,
         isUser: false,
         timestamp: new Date()
       };
