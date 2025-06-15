@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { 
-  Box, 
-  TextField, 
-  Paper, 
-  Typography, 
+import {
+  Box,
+  TextField,
+  Paper,
+  Typography,
   Avatar,
   CircularProgress,
   IconButton
@@ -12,27 +12,28 @@ import SendIcon from '@mui/icons-material/Send';
 import { styled } from '@mui/material/styles';
 
 interface Message {
-  id: number;
+  id: string;
   text: string;
   isUser: boolean;
   timestamp: Date;
 }
-const ChatContainer = styled(Paper)(({ theme }) => ({
+
+const ChatContainer = styled(Paper)({
   width: '100%',
   height: '100%',
   display: 'flex',
   flexDirection: 'column',
-  backgroundColor: theme.palette.background.paper,
+  backgroundColor: '#fff',
   overflow: 'hidden',
   position: 'relative'
-}));
+});
 
 const MessagesBox = styled(Box)(({ theme }) => ({
   flex: 1,
   overflow: 'auto',
   padding: theme.spacing(3),
-  backgroundColor: '#FAF6F1', 
-  backgroundImage: 'radial-gradient(circle at center, #F0E6DB 1px, transparent 1px)', 
+  backgroundColor: '#FAF6F1',
+  backgroundImage: 'radial-gradient(circle at center, #F0E6DB 1px, transparent 1px)',
   backgroundSize: '24px 24px',
   '&::-webkit-scrollbar': {
     width: '8px',
@@ -79,9 +80,9 @@ const MessageBubble = styled(Box, {
       transform: 'translateY(0)'
     }
   },
-  backgroundColor: isUser ? '#C8A27C' : '#FFFFFF', 
+  backgroundColor: isUser ? '#C8A27C' : '#FFFFFF',
   color: isUser ? '#FFFFFF' : '#4A4A4A',
-  boxShadow: isUser 
+  boxShadow: isUser
     ? '0 4px 12px rgba(200, 162, 124, 0.2)'
     : '0 4px 12px rgba(0, 0, 0, 0.08)',
 }));
@@ -91,15 +92,20 @@ const StyledAvatar = styled(Avatar)(({ theme }) => ({
   '&:hover': {
     transform: 'scale(1.1)',
   },
-  backgroundColor: '#8B6B4F', 
+  width: 36,
+  height: 36,
+  boxShadow: theme.shadows[2],
+  fontSize: 14,
+  fontWeight: 600,
+  backgroundColor: '#8B6B4F',
   '&.user-avatar': {
-    backgroundColor: '#C8A27C', 
+    backgroundColor: '#C8A27C',
   }
 }));
 
 const ChatInterface = () => {
   const [messages, setMessages] = useState<Message[]>([{
-    id: 1,
+    id: 'initial',
     text: "Hello! I'm Paani's digital marketing assistant. How can I help you with our services today?",
     isUser: false,
     timestamp: new Date()
@@ -116,66 +122,74 @@ const ChatInterface = () => {
     scrollToBottom();
   }, [messages]);
 
-  const chatContext = `You are Paani Digital Marketing's AI assistant. Follow these rules strictly:
-
-Response Guidelines:
-1. Keep responses brief and focused on what the user specifically asks
-2. Don't provide all information at once unless explicitly requested
-3. Use short, clear paragraphs
-4. Only list relevant services/prices when asked
-5. Avoid lengthy greetings
-6. Ask short, relevant follow-up questions
-
-Formatting Rules:
-1. For services, use format: "Service Name: NPR XXX"
-2. For plans, use numbered lists (1, 2, 3)
-3. For features, use checkmarks (✓)
-4. Use proper spacing between points
-5. Break long responses into small chunks
-
-Our Services:
-1. Social Media Management
-   • NPR 500/platform
-   • Content creation & management
-
-2. Brand Video Production
-   • NPR 3000/video
-   • Professional quality videos
-
-3. Digital Gateway Board
-   • NPR 2500-6500
-   • Custom digital solutions
-
-Monthly Plans (Only show when asked):
-1. Basic (NPR 3,500)
-2. Standard (NPR 6,060)
-3. Premium (NPR 13,460)
-
-Company Stats (Only show when asked about company):
-• 500+ Clients
-• 1,200+ Projects
-• 98% Success Rate
-
-Current conversation context: ${messages.map(m => `${m.isUser ? 'User' : 'Assistant'}: ${m.text}`).join('\n')}`;
+  const generateId = () => {
+    return typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`;
+  };
 
   const handleSend = async () => {
     if (!input.trim()) return;
 
     const userMessage: Message = {
-      id: Date.now(),
+      id: generateId(),
       text: input,
       isUser: true,
       timestamp: new Date()
     };
 
-    setMessages(prev => [...prev, userMessage]);
+    const updatedMessages = [...messages, userMessage];
+    setMessages(updatedMessages);
     setInput('');
     setIsLoading(true);
+
+    // Add the chat context definition here
+    const chatContext = `You are Paani Digital Marketing's AI assistant. Help users with our services:
+
+Services:
+1. Social Media Management (NPR 500/platform)
+   • Content creation & management
+   • Social media strategy
+   • Community engagement
+
+2. Brand Video Production (NPR 3000/video)
+   • Professional quality videos
+   • Custom branding
+   • Creative storytelling
+
+3. Digital Gateway Board (NPR 2500-6500)
+   • Custom digital solutions
+   • Strategic implementation
+
+Plans:
+1. Basic Plan - NPR 3,500/month
+   ✓ FB/Insta Boost ($5)
+   ✓ 12 Social Media Posts
+   ✓ All Festival Contents
+
+2. Standard Plan - NPR 6,060/month
+   ✓ FB/Insta boost ($15)
+   ✓ 16 Social Media Posts
+   ✓ All Festival Contents
+   ✓ Social Media Handling
+
+3. Premium Plan - NPR 13,460/month
+   ✓ 16 Custom Posts
+   ✓ Social Media Handling
+   ✓ Social Media Boost ($26)
+   ✓ Brand Video Content
+
+Response Guidelines:
+• Keep responses focused on user questions
+• Use numbered lists for plans
+• Format prices clearly
+• Be concise and professional
+• End with relevant follow-up questions
+
+Current conversation: ${updatedMessages.map(m => `${m.isUser ? 'User' : 'Assistant'}: ${m.text}`).join('\n')}`;
 
     try {
       const response = await fetch('/api/chat', {
         method: 'POST',
-        headers: { 
+        headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
@@ -190,23 +204,27 @@ Current conversation context: ${messages.map(m => `${m.isUser ? 'User' : 'Assist
       }
 
       const data = await response.json();
-      
+
       const botMessage: Message = {
-        id: Date.now() + 1,
+        id: generateId(),
         text: data.response,
         isUser: false,
         timestamp: new Date()
       };
 
       setMessages(prev => [...prev, botMessage]);
-    } catch (error: any) {
-      console.error('Chat Error:', error);
+    } catch (error) {
+      const errorText = error instanceof Error 
+        ? error.message 
+        : 'An unexpected error occurred';
+
       const errorMessage: Message = {
-        id: Date.now() + 1,
-        text: `I apologize, but I encountered an error: ${error.message}`,
+        id: generateId(),
+        text: `I apologize, but I encountered an error: ${errorText}`,
         isUser: false,
         timestamp: new Date()
       };
+
       setMessages(prev => [...prev, errorMessage]);
     } finally {
       setIsLoading(false);
@@ -223,61 +241,36 @@ Current conversation context: ${messages.map(m => `${m.isUser ? 'User' : 'Assist
               display: 'flex',
               justifyContent: message.isUser ? 'flex-end' : 'flex-start',
               mb: 3,
-              opacity: isLoading ? 0.7 : 1,
+              opacity: isLoading && message.isUser ? 0.7 : 1,
               transition: 'opacity 0.3s'
             }}
           >
             {!message.isUser && (
-              <StyledAvatar 
-                sx={{ 
-                  mr: 1.5, 
-                  bgcolor: 'primary.main',
-                  width: 36,
-                  height: 36,
-                  boxShadow: 2,
-                }}
-              >
-                AI
+              <StyledAvatar>
+                A
               </StyledAvatar>
             )}
-            <MessageBubble
-              isUser={message.isUser}
-              sx={{
-                bgcolor: message.isUser ? 'primary.main' : 'white',
-                color: message.isUser ? 'white' : 'text.primary',
-                boxShadow: message.isUser 
-                  ? '0 4px 12px rgba(0, 0, 0, 0.15)'
-                  : '0 4px 12px rgba(0, 0, 0, 0.08)',
-              }}
-            >
+            <MessageBubble isUser={message.isUser}>
               <Typography variant="body1" sx={{ lineHeight: 1.6 }}>
                 {message.text}
               </Typography>
             </MessageBubble>
             {message.isUser && (
-              <StyledAvatar 
-                sx={{ 
-                  ml: 1.5, 
-                  bgcolor: 'secondary.main',
-                  width: 36,
-                  height: 36,
-                  boxShadow: 2,
-                }}
-              >
+              <StyledAvatar className="user-avatar">
                 U
               </StyledAvatar>
             )}
           </Box>
         ))}
         {isLoading && (
-          <Box sx={{ 
-            display: 'flex', 
-            justifyContent: 'flex-start', 
+          <Box sx={{
+            display: 'flex',
+            justifyContent: 'flex-start',
             mb: 2,
-            pl: 2 
+            pl: 2
           }}>
-            <CircularProgress 
-              size={24} 
+            <CircularProgress
+              size={24}
               thickness={4}
               sx={{ color: 'primary.light' }}
             />
@@ -285,7 +278,7 @@ Current conversation context: ${messages.map(m => `${m.isUser ? 'User' : 'Assist
         )}
         <div ref={messagesEndRef} />
       </MessagesBox>
-      
+
       <InputContainer>
         <Box sx={{ display: 'flex', gap: 1.5 }}>
           <TextField
@@ -294,7 +287,12 @@ Current conversation context: ${messages.map(m => `${m.isUser ? 'User' : 'Assist
             placeholder="Type your message here..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            onKeyPress={(e) => e.key === 'Enter' && !e.shiftKey && handleSend()}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                handleSend();
+              }
+            }}
             disabled={isLoading}
             size="small"
             sx={{
