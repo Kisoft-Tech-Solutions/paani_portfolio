@@ -141,7 +141,6 @@ const ChatInterface = () => {
     setInput('');
     setIsLoading(true);
 
-    // Add the chat context definition here
     const chatContext = `You are Paani Digital Marketing's AI assistant. Help users with our services:
 
 Services:
