@@ -43,14 +43,14 @@ const Pricing = () => {
   ];
 
   const additionalServices = [
-    { name: "Social Media management", price: "₹500 per platform/month" },
-    { name: "Brand Video", price: "₹3000" },
-    { name: "Digital Gateway Board", price: "₹500 - ₹6500" },
-    { name: "Social Media Boosting", price: "₹165 per $" },
-    { name: "Product Video", price: "₹50 per product" },
-    { name: "Product Photoshoot", price: "₹20 per product" },
-    { name: "Content Design", price: "₹500 per Content" },
-    { name: "Portfolio Website", price: "₹10000" }
+    { name: "Social Media management", price: "NPR 500 per platform/month" },
+    { name: "Brand Video", price: "NPR 3000" },
+    { name: "Digital Gateway Board", price: "NPR 500 - NPR 6500" },
+    { name: "Social Media Boosting", price: "NPR 165 per $" },
+    { name: "Product Video", price: "NPR 50 per product" },
+    { name: "Product Photoshoot", price: "NPR 20 per product" },
+    { name: "Content Design", price: "NPR 500 per Content" },
+    { name: "Portfolio Website", price: "NPR 10000" }
   ];
 
   return (
