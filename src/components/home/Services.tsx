@@ -168,7 +168,7 @@ const Services = () => {
                 whileTap={{ scale: 0.95 }}
                 className="w-full mt-8 bg-white text-blue-900 py-3 rounded-xl font-semibold hover:bg-blue-50 transition-colors"
               >
-                Get Started
+                
               </motion.button>
             </motion.div>
           ))}
