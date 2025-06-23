@@ -40,7 +40,7 @@ const Services = () => {
 
   const handleWhatsAppClick = (service: string) => {
     const message = encodeURIComponent(`Hi, I'm interested in your ${service} service. Can you provide more details?`);
-    window.open(`https://wa.me/9801157986?text=${message}`, '_blank');
+    window.open(`https://wa.me/+9779801157986?text=${message}`, '_blank');
   };
 
   return (
