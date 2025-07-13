@@ -20,7 +20,7 @@ const Team = () => {
     {
       name: "Rejeena Rai",
       role: "Graphic Designer",
-      image: "/images/u1.png",
+      image: "/images/rejeena.jpg",
       bio: "Crafting visual stories and compelling brand experiences with elegance."
     },
     {
