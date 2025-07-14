@@ -132,11 +132,13 @@ const Hero = () => {
             className="hidden md:block relative"
           >
             <motion.div
+              initial={{ scale: 0.95 }}
               animate={{
-                y: [-10, 10, -10],
+                scale: 1,
+                rotate: [0, 1, 0],
               }}
               transition={{
-                duration: 4,
+                duration: 6,
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
@@ -147,18 +149,20 @@ const Hero = () => {
                   className="absolute -inset-4 bg-blue-500/20 rounded-2xl blur-xl"
                   animate={{
                     opacity: [0.5, 0.7, 0.5],
+                    scale: [1, 1.05, 1],
                   }}
                   transition={{
                     duration: 4,
                     repeat: Infinity,
+                    ease: "easeInOut"
                   }}
                 />
                 <Image
-                  src="/logo.jpeg"
+                  src="/img1.png"
                   alt="Digital Marketing Dashboard"
-                  width={600}
-                  height={400}
-                  className="rounded-2xl shadow-2xl relative z-10"
+                  width={600}  
+                  height={300} 
+                  className="rounded-2xl shadow-2xl relative z-10 hover:scale-[1.02] transition-transform duration-200"
                 />
               </div>
             </motion.div>
