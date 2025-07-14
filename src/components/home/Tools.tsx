@@ -7,7 +7,7 @@ import {
 } from 'react-icons/fa';
 import {
   SiAdobephotoshop, SiAdobeillustrator, SiAdobepremierepro,
-  SiCanva, SiFigma, SiReact, SiNextdotjs, SiFramer,
+  SiCanva, SiReact, SiNextdotjs, SiFramer,
   SiTailwindcss, SiMongodb, SiNodedotjs, SiJavascript,
   SiTypescript, SiExpress, SiHtml5, SiCss3,
   SiDavinciresolve, SiOpenai,

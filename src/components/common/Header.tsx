@@ -6,15 +6,15 @@ const Header = () => {
     <header className="fixed top-0 w-full bg-blue-600 text-white z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <Link href="/" className="flex items-center h-full py-2">
-            <div className="relative h-full aspect-[3/1]">
+          <Link href="/" className="flex items-center">
+            <div className="relative w-[120px] md:w-[150px] h-[40px] md:h-[50px]">
               <Image
                 src="/logo.jpeg"
                 alt="Paani Digital Marketing"
                 fill
-                className="object-contain"
+                className="object-contain mix-blend-multiply dark:mix-blend-difference"
                 priority
-                sizes="(max-width: 768px) 100px, 150px"
+                sizes="(max-width: 768px) 120px, 150px"
               />
             </div>
           </Link>

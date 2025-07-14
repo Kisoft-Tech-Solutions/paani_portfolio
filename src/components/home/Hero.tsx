@@ -65,7 +65,7 @@ const Hero = () => {
             >
               where clarity flows and purpose leads-marketing in its Purest form{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-100">
-                "Like Paani" 
+                &ldquo;Like Paani&rdquo;
               </span>
             </motion.h1>
             <motion.p
@@ -75,7 +75,7 @@ const Hero = () => {
               className="text-xl text-blue-100 leading-relaxed"
             >
               Lunch your online store with zero cost setup and zero comission on Sales, seamleisly linked to Social Media for effortless selling. Our premium plans are tailored 
-              to your business & budget, covering social media management, Seo, Email Marketing, Content Design, Photo & video shoot, Meta Ads, Google Ads, Web & App deployment & delivering service
+              to your business &amp; budget, covering social media management, Seo, Email Marketing, Content Design, Photo &amp; video shoot, Meta Ads, Google Ads, Web & App deployment & delivering service
                - your one stop solution to building and growing your complete digital presences with real result driven sucess.
             </motion.p>
             <motion.div
@@ -155,7 +155,7 @@ const Hero = () => {
                   transition={{
                     duration: 4,
                     repeat: Infinity,
-                    ease: "easeInOut"
+                    ease: "easeInOut" 
                   }}
                 />
                 <Image
