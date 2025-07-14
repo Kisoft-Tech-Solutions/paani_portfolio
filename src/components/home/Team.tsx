@@ -30,9 +30,9 @@ const Team = () => {
       bio: "Crafting visual stories and compelling brand experiences with elegance."
     },
     {
-      name: "Rejjena Rai",
-      role: "Marketing Strategist",
-      image: "/images/u1.png",
+      name: "Samir Kharel",
+      role: "Developer",
+      image: "/images/samir.jpg",
       bio: "Optimizing campaigns and ensuring every strategy delivers measurable results."
     }
     

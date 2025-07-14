@@ -63,9 +63,9 @@ const Hero = () => {
               transition={{ delay: 0.2, duration: 0.8 }}
               className="text-5xl md:text-6xl font-bold leading-tight"
             >
-              Elevate Your{' '}
+              where clarity flows and purpose leads-marketing in its Purest form{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-100">
-                Digital Presence
+                "Like Paani" 
               </span>
             </motion.h1>
             <motion.p
@@ -74,8 +74,9 @@ const Hero = () => {
               transition={{ delay: 0.4, duration: 0.8 }}
               className="text-xl text-blue-100 leading-relaxed"
             >
-              Transform your brand with our innovative digital marketing solutions. 
-              We help businesses grow their online presence and achieve measurable results.
+              Lunch your online store with zero cost setup and zero comission on Sales, seamleisly linked to Social Media for effortless selling. Our premium plans are tailored 
+              to your business & budget, covering social media management, Seo, Email Marketing, Content Design, Photo & video shoot, Meta Ads, Google Ads, Web & App deployment & delivering service
+               - your one stop solution to building and growing your complete digital presences with real result driven sucess.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}

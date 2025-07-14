@@ -130,7 +130,7 @@ const ToolsTechWorks = () => {
           transition={{ duration: 0.6 }}
           className="mt-20 max-w-4xl mx-auto bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white p-8 rounded-3xl shadow-xl border border-white/20 text-center"
         >
-          <h3 className="text-3xl font-bold mb-4">Launch Your Website for Just ₹10,000!</h3>
+          <h3 className="text-3xl font-bold mb-4">Launch Your Website for Just NPR 10,000!</h3>
           <p className="text-lg mb-6">
             Get a beautiful, fast, and SEO-optimized website for your business at a startup-friendly price.
             Limited-time offer tailored for new brands and growing startups.
