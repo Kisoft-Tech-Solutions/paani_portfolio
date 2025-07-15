@@ -80,7 +80,7 @@ const Header = () => {
             </motion.svg>
           </motion.button>
 
-          {/* Mobile Menu - Updated */}
+          {/* Mobile Menu */}
           <motion.div
             initial={{ x: '100%' }}
             animate={{ x: isOpen ? 0 : '100%' }}
@@ -107,7 +107,6 @@ const Header = () => {
                       onClick={toggleMenu}
                       className="flex items-center space-x-2 text-white hover:bg-blue-500/20 px-4 py-3 rounded-lg transition-all duration-200"
                     >
-                      {/* You can add icons here if needed */}
                       <span className="text-lg font-medium">{item}</span>
                     </Link>
                   </motion.div>
