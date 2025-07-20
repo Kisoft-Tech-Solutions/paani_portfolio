@@ -1,110 +1,172 @@
 'use client';
 
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 
 const Hero = () => {
   const router = useRouter();
 
+  const backgroundVariants = {
+    initial: { 
+      opacity: 0,
+      scale: 0.8 
+    },
+    animate: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 1.5,
+        ease: [0.6, 0.05, 0.01, 0.9]
+      }
+    }
+  };
+
+  const fadeInUpVariant = {
+    initial: { 
+      opacity: 0, 
+      y: 30 
+    },
+    animate: (custom: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        delay: custom * 0.2,
+        ease: [0.6, 0.05, 0.01, 0.9]
+      }
+    })
+  };
+
+  const floatingAnimation = {
+    animate: {
+      y: [-10, 10, -10],
+      transition: {
+        duration: 6,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }
+    }
+  };
+
   return (
     <section className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600 relative overflow-hidden">
-      {/* Enhanced background elements */}
+    
       <div className="absolute inset-0">
         <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.15, 0.25, 0.15],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-blue-400/20 rounded-full filter blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.15, 1],
-            opacity: [0.15, 0.25, 0.15],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2,
-          }}
-          className="absolute bottom-1/4 right-1/3 w-[450px] h-[450px] bg-blue-300/20 rounded-full filter blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.1, 1],
-            opacity: [0.1, 0.18, 0.1],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1,
-          }}
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/10 rounded-full filter blur-3xl"
-        />
+          variants={backgroundVariants}
+          initial="initial"
+          animate="animate"
+          className="absolute inset-0"
+        >
+          <motion.div
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.2, 0.3, 0.2],
+              filter: ["blur(40px)", "blur(60px)", "blur(40px)"]
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="absolute top-1/4 left-1/3 w-[600px] h-[600px] bg-gradient-to-r from-blue-400/30 to-blue-300/20 rounded-full"
+          />
+          <motion.div
+            animate={{
+              scale: [1.2, 1, 1.2],
+              opacity: [0.15, 0.25, 0.15],
+              filter: ["blur(30px)", "blur(50px)", "blur(30px)"]
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1
+            }}
+            className="absolute bottom-1/4 right-1/3 w-[500px] h-[500px] bg-gradient-to-r from-blue-300/20 to-blue-200/20 rounded-full"
+          />
+        </motion.div>
       </div>
 
       <div className="relative container mx-auto px-6 pt-32 pb-20">
         <div className="flex flex-col md:flex-row md:items-center gap-12 md:gap-20">
-          {/* Left column with image and stats */}
+          {/* Left Column */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9, ease: "easeOut" }}
+            variants={fadeInUpVariant}
+            initial="initial"
+            animate="animate"
+            custom={0}
             className="w-full md:w-2/5 space-y-10"
           >
-            {/* Image with enhanced animation and effects */}
             <motion.div
-              initial={{ scale: 0.95 }}
-              animate={{
-                scale: 1,
-                rotate: [0, 0.5, 0],
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
+              variants={floatingAnimation}
+              animate="animate"
               className="relative z-10"
             >
               <div className="relative max-w-md mx-auto md:mx-0">
-                {/* Enhanced glow effect */}
                 <motion.div
-                  className="absolute -inset-4 bg-gradient-to-r from-blue-500/30 to-blue-400/20 rounded-2xl blur-xl"
                   animate={{
-                    opacity: [0.5, 0.7, 0.5],
-                    scale: [1, 1.03, 1],
+                    boxShadow: [
+                      "0 0 20px rgba(59, 130, 246, 0.3)",
+                      "0 0 40px rgba(59, 130, 246, 0.2)",
+                      "0 0 20px rgba(59, 130, 246, 0.3)"
+                    ]
                   }}
                   transition={{
-                    duration: 5,
+                    duration: 4,
                     repeat: Infinity,
-                    ease: "easeInOut" 
+                    ease: "easeInOut"
                   }}
+                  className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-blue-400/10 rounded-2xl blur-xl"
                 />
-                <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 20
+                  }}
+                  className="relative overflow-hidden rounded-2xl shadow-2xl"
+                >
                   <Image
                     src="/img1.png"
                     alt="Digital Marketing Dashboard"
-                    width={400}  
-                    height={220} 
-                    className="relative z-10 hover:scale-[1.02] transition-transform duration-500 w-full h-auto"
+                    width={400}
+                    height={220}
+                    className="relative z-10 w-full h-auto"
                     priority
                   />
-                  {/* Subtle overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent z-20"></div>
-                </div>
+                  <motion.div
+                    animate={{
+                      opacity: [0.4, 0.6, 0.4],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                    className="absolute inset-0 bg-gradient-to-t from-blue-900/30 to-transparent z-20"
+                  />
+                </motion.div>
               </div>
             </motion.div>
 
-            {/* Stats section with enhanced styling */}
-            <div className="grid grid-cols-3 gap-4">
+            <motion.div
+              variants={{
+                initial: { opacity: 0 },
+                animate: {
+                  opacity: 1,
+                  transition: {
+                    staggerChildren: 0.2,
+                    delayChildren: 0.5
+                  }
+                }
+              }}
+              initial="initial"
+              animate="animate"
+              className="grid grid-cols-3 gap-4"
+            >
               {[
                 { number: "100+", text: "Clients" },
                 { number: "250+", text: "Projects" },
@@ -123,14 +185,15 @@ const Hero = () => {
                   <p className="text-blue-100 text-sm mt-1 font-medium">{stat.text}</p>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
 
-          {/* Text content on the right with refined styling */}
+          {/* Right Column */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9, ease: "easeOut" }}
+            variants={fadeInUpVariant}
+            initial="initial"
+            animate="animate"
+            custom={1}
             className="text-white w-full md:w-3/5"
           >
             <div className="space-y-10">
@@ -193,8 +256,8 @@ const Hero = () => {
                   View Services
                 </motion.button>
               </motion.div>
-              
-              {/* Feature list with enhanced styling */}
+
+              {/* Feature list */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pt-4">
                 {[
                   "Social Media Management",
