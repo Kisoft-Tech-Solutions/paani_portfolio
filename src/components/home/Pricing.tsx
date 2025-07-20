@@ -211,12 +211,12 @@ export default function Pricing() {
                       </motion.li>
                     ))}
                   </motion.ul>
-                  <div className="flex gap-2">
+                  <div className="text-center">
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => handleWhatsAppClick(plan.name, plan.price)}
-                      className={`flex-1 py-3 md:py-4 px-6 md:px-4 rounded-xl font-semibold flex items-center justify-center gap-2 ${
+                      className={`w-full py-3 md:py-4 px-6 md:px-4 rounded-xl font-semibold flex items-center justify-center gap-2 ${
                         plan.isPopular
                           ? 'bg-white text-blue-900 hover:bg-blue-50'
                           : 'bg-white/10 text-white hover:bg-white/20'
@@ -227,17 +227,6 @@ export default function Pricing() {
                       </svg>
                       Book Now
                     </motion.button>
-                    <Link href={`/pricing/${pricingCategories[selectedCategory].slug}/${plan.slug}`}>
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="p-3 md:p-4 rounded-xl bg-blue-600/30 text-white hover:bg-blue-600/50 transition-all border border-blue-400/30"
-                      >
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                        </svg>
-                      </motion.button>
-                    </Link>
                   </div>
                 </div>
               </motion.div>
