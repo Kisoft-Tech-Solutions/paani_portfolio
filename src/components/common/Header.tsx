@@ -14,7 +14,7 @@ const Header = () => {
     <motion.header 
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="fixed top-0 w-full bg-blue-600/95 backdrop-blur-sm border-b border-blue-300/20 z-50"
+      className="fixed top-0 w-full bg-white shadow-md backdrop-blur-sm border-b border-gray-200 z-50"
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
@@ -42,7 +42,7 @@ const Header = () => {
               <Link 
                 key={item}
                 href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-                className="text-white hover:text-blue-200 transition-colors font-medium"
+                className="text-blue-600 hover:text-blue-800 transition-colors font-medium"
               >
                 {item}
               </Link>
@@ -54,7 +54,7 @@ const Header = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={toggleMenu}
-            className="md:hidden p-2 text-white z-50"
+            className="md:hidden p-2 text-blue-600 z-50"
             aria-label="Toggle Menu"
           >
             <motion.svg 
@@ -85,12 +85,12 @@ const Header = () => {
             initial={{ x: '100%' }}
             animate={{ x: isOpen ? 0 : '100%' }}
             transition={{ type: "spring", bounce: 0, duration: 0.4 }}
-            className="fixed top-0 right-0 h-screen w-64 bg-blue-600/95 backdrop-blur-sm md:hidden z-40 shadow-xl"
+            className="fixed top-0 right-0 h-screen w-64 bg-white shadow-xl md:hidden z-40"
           >
             <div className="flex flex-col h-full">
               {/* Menu Header */}
-              <div className="p-4 border-b border-blue-500/30">
-                <h2 className="text-white font-semibold text-lg">Menu</h2>
+              <div className="p-4 border-b border-gray-200">
+                <h2 className="text-blue-600 font-semibold text-lg">Menu</h2>
               </div>
 
               {/* Navigation Links */}
@@ -105,7 +105,7 @@ const Header = () => {
                     <Link 
                       href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
                       onClick={toggleMenu}
-                      className="flex items-center space-x-2 text-white hover:bg-blue-500/20 px-4 py-3 rounded-lg transition-all duration-200"
+                      className="flex items-center space-x-2 text-blue-600 hover:bg-blue-50 px-4 py-3 rounded-lg transition-all duration-200"
                     >
                       <span className="text-lg font-medium">{item}</span>
                     </Link>
@@ -114,12 +114,12 @@ const Header = () => {
               </nav>
 
               {/* Menu Footer */}
-              <div className="mt-auto p-4 border-t border-blue-500/30">
+              <div className="mt-auto p-4 border-t border-gray-200">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={toggleMenu}
-                  className="w-full py-2 px-4 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-colors"
+                  className="w-full py-2 px-4 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors"
                 >
                   Close Menu
                 </motion.button>
