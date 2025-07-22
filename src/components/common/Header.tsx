@@ -74,7 +74,7 @@ const Header = () => {
               className="relative w-[100px] h-[65px]"
             >
               <Image
-                src="/paani.jpeg"
+                src="/l.png"
                 alt="Paani Digital Marketing"
                 fill
                 className="object-contain"
